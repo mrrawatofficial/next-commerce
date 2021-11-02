@@ -1,0 +1,31 @@
+@import "../../styles/_variables.scss";
+
+.button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	background: $white;
+	border: 1px solid $dark;
+	border-radius: 0.1875rem;
+	color: $dark;
+	font-size: 1rem;
+	font-weight: bold;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	&:hover {
+		background: $black;
+		border-color: $grey;
+		color: $white;
+	}
+	&.secondary {
+		background: $dark;
+		border-color: $grey;
+		color: $white;
+		&:hover {
+			background: $white;
+			border-color: $grey;
+			color: $dark;
+		}
+	}
+}

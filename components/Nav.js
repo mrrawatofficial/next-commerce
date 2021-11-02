@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { BiUser, BiHeart, BiSearch } from "react-icons/bi";
+import { FiShoppingCart } from "react-icons/fi";
 import styles from "../styles/nav.module.scss";
 
 const Nav = () => {
@@ -39,66 +42,69 @@ const Nav = () => {
 						/>
 					</div>
 					<div className="offcanvas-body">
-						<ul className="navbar-nav me-auto">
+						<ul className="navbar-nav align-items-center ms-auto">
 							<li className="nav-item">
-								<a className="nav-link active" href="#">
-									Home
-									<span className="visually-hidden">(current)</span>
-								</a>
+								<Link href="/">
+									<a className="nav-link active">
+										Home
+										<span className="visually-hidden">(current)</span>
+									</a>
+								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Features
-								</a>
+								<Link href="/">
+									<a className="nav-link" href="#">
+										Shop
+									</a>
+								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">
-									Pricing
-								</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="#">
-									About
-								</a>
-							</li>
-							<li className="nav-item dropdown">
-								<a
-									className="nav-link dropdown-toggle"
-									data-bs-toggle="dropdown"
-									href="#"
-									role="button"
-									aria-haspopup="true"
-									aria-expanded="false"
-								>
-									Dropdown
-								</a>
-								<div className="dropdown-menu">
-									<a className="dropdown-item" href="#">
-										Action
+								<Link href="/">
+									<a className="nav-link " href="#">
+										Categories
 									</a>
-									<a className="dropdown-item" href="#">
-										Another action
-									</a>
-									<a className="dropdown-item" href="#">
-										Something else here
-									</a>
-									<div className="dropdown-divider" />
-									<a className="dropdown-item" href="#">
-										Separated link
-									</a>
-								</div>
+								</Link>
 							</li>
 						</ul>
-						<form className="d-flex">
-							<input
-								className="form-control me-sm-2"
-								type="text"
-								placeholder="Search"
-							/>
-							<button className="btn btn-secondary" type="submit">
-								Search
-							</button>
-						</form>
+
+						<ul className="navbar-nav ms-auto">
+							<li className="nav-item px-2 rounded me-2">
+								<Link href="/">
+									<a className="nav-link fs-4">
+										<span>
+											<BiSearch />
+										</span>
+									</a>
+								</Link>
+							</li>
+							<li className="nav-item px-2 rounded me-2">
+								<Link href="/">
+									<a className="nav-link fs-4">
+										<span>
+											<FiShoppingCart />
+										</span>
+									</a>
+								</Link>
+							</li>
+							<li className="nav-item px-2 rounded me-2">
+								<Link href="/">
+									<a className="nav-link fs-4">
+										<span>
+											<BiHeart />
+										</span>
+									</a>
+								</Link>
+							</li>
+							<li className="nav-item px-2 rounded me-2">
+								<Link href="/">
+									<a className="nav-link fs-4">
+										<span>
+											<BiUser />
+										</span>
+									</a>
+								</Link>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

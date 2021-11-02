@@ -1,0 +1,61 @@
+@import "../../styles/variables";
+.slider {
+	overflow: hidden;
+	$height: calc(100vh - 4.25rem);
+	.slick-slide {
+		> div {
+			max-height: $height;
+			min-height: $height;
+			height: 100%;
+		}
+	}
+	max-height: $height;
+	height: 100%;
+	.sliderItem {
+		position: relative;
+		max-height: $height;
+		min-height: $height;
+		height: 100%;
+		img {
+			max-height: $height;
+			min-height: $height;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+		.content {
+			position: absolute;
+			bottom: 0.625rem;
+			right: 0.625rem;
+			left: 0.625rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			background: linear-gradient(
+				to right,
+				rgba($black, 0.5) 0%,
+				rgba($black, 0.5) 100%
+			);
+			z-index: 1;
+			padding: 0.9375rem;
+			border-radius: 0.3125rem;
+			backdrop-filter: blur(0.625rem);
+			border: 0.0625rem solid #ffffff6b;
+			box-shadow: 0 0.125rem 0.3125rem rgba($dark, 0.3);
+			h2 {
+				font-size: 3rem;
+				font-weight: 700;
+				color: $white;
+				margin-bottom: 0rem;
+			}
+			p {
+				font-size: 1.5rem;
+				font-weight: 300;
+				color: $white;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}
