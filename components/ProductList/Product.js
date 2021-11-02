@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiShoppingCart, FiHeart } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
+import { BiRupee } from "react-icons/bi";
 import Button from "../../components/Buttons";
 import styles from "./products.module.scss";
 const Product = () => {
@@ -30,7 +31,9 @@ const Product = () => {
 						<h3 className={styles.productTitle}>Product Title</h3>
 					</Link>
 					<div className={styles.productAction}>
-						<div className={styles.productPrice}>Rs. 1000</div>
+						<div className={styles.productPrice}>
+							<BiRupee /> 1000
+						</div>
 						<Button secondary>
 							<FiShoppingCart />
 						</Button>
