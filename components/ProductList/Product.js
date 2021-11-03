@@ -5,15 +5,18 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
 import Button from "../../components/Buttons";
 import styles from "./products.module.scss";
-const Product = () => {
+const Product = ({ prodBgColor, items }) => {
 	const [liked, setLiked] = useState(false);
 	const handleLike = () => {
 		setLiked(!liked);
 	};
 	return (
-		<div className="col-md-4">
+		<div className="col-md-3">
 			<div className={styles.product}>
-				<div className={styles.productHeader} style={{ "--color": "#bdacff" }}>
+				<div
+					className={styles.productHeader}
+					style={{ "--color": prodBgColor }}
+				>
 					<span
 						className={`${styles.wishList} ${liked && styles.liked}`}
 						onClick={handleLike}
@@ -21,18 +24,24 @@ const Product = () => {
 						{liked ? <BsFillHeartFill /> : <FiHeart />}
 					</span>
 					<img
-						src="https://www.pngmart.com/files/5/Diamond-Necklace-PNG-Clipart.png"
-						alt="product"
+						src={items.image}
+						alt={items.title}
 						className={styles.productImage}
 					/>
 				</div>
 				<div className={styles.productDetails}>
-					<Link href="/">
-						<h3 className={styles.productTitle}>Product Title</h3>
+					<Link href={`/products/${items.id}`}>
+						<h5 className={`${styles.productTitle} text-truncate`}>
+							{items.title}
+						</h5>
 					</Link>
 					<div className={styles.productAction}>
 						<div className={styles.productPrice}>
-							<BiRupee /> 1000
+							<del className="text-danger">
+								<BiRupee /> {Math.floor(items.price) * 75}
+							</del>
+							<br />
+							<BiRupee /> {Math.floor(items.price) * 70}
 						</div>
 						<Button secondary>
 							<FiShoppingCart />

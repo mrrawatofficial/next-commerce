@@ -1,6 +1,8 @@
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import Product from "./Product";
 
-const index = () => {
+const index = ({ staticProduct }) => {
 	return (
 		<section className="section">
 			<div className="container">
@@ -10,10 +12,18 @@ const index = () => {
 					</div>
 				</div>
 				<div className="row">
-					<Product />
-					<Product />
-					<Product />
-					<Product />
+					<div className="col-md-12">asdfasd</div>
+					{staticProduct.map((product) => {
+						return <Product key={product.id} items={product} />;
+					})}
+					{/* <Product prodBgColor="#ffe3e3" />
+					<Product prodBgColor="#efe3ff" />
+					<Product prodBgColor="#e3efff" />
+					<Product prodBgColor="#f3ffe3" />
+					<Product prodBgColor="#ffe3e3" />
+					<Product prodBgColor="#efe3ff" />
+					<Product prodBgColor="#e3efff" />
+					<Product prodBgColor="#f3ffe3" /> */}
 				</div>
 			</div>
 		</section>

@@ -9,9 +9,9 @@ const Nav = () => {
 			className={`navbar navbar-expand-lg navbar-dark bg-primary sticky-top ${styles.navbar}`}
 		>
 			<div className="container-fluid">
-				<a className="navbar-brand" href="#">
-					Navbar
-				</a>
+				<Link href="/">
+					<a className="navbar-brand">Navbar</a>
+				</Link>
 				<button
 					className="navbar-toggler"
 					type="button"

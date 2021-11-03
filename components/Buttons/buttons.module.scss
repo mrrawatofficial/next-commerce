@@ -3,7 +3,7 @@
 .button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
-	background: $white;
+	background: transparent;
 	border: 1px solid $dark;
 	border-radius: 0.1875rem;
 	color: $dark;
@@ -11,21 +11,66 @@
 	font-weight: bold;
 	text-decoration: none;
 	text-transform: uppercase;
-	transition: all 0.2s ease-in-out;
+	transition: all 0.3s linear;
 	cursor: pointer;
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		width: 110%;
+		height: 100%;
+		background: $white;
+		opacity: 1;
+		transition: all 0.3s linear;
+		z-index: -1;
+		border: 0;
+		outline: 0;
+	}
+	&::before {
+		left: 0;
+		transform: translateX(-50%);
+	}
+	&::after {
+		right: 0;
+		transform: translateX(50%);
+	}
 	&:hover {
+		&::after {
+			transform: translateX(50%) translateY(-100%);
+		}
+		&::before {
+			transform: translateX(-50%) translateY(100%);
+		}
 		background: $black;
 		border-color: $grey;
 		color: $white;
 	}
 	&.secondary {
-		background: $dark;
-		border-color: $grey;
-		color: $white;
-		&:hover {
-			background: $white;
-			border-color: $grey;
-			color: $dark;
+		&::before {
+			transform: translateX(0) translateY(-50%);
 		}
+		&::after {
+			transform: translateX(0) translateY(50%);
+		}
+		&:hover {
+			&::before {
+				transform: translateX(-100%) translateY(-50%);
+			}
+			&::after {
+				transform: translateX(100%) translateY(50%);
+			}
+		}
+		// 	background: $dark;
+		// 	border-color: $grey;
+		// 	color: $white;
+		// 	&:hover {
+		// 		background: $white;
+		// 		border-color: $grey;
+		// 		color: $dark;
+		// 	}
 	}
 }
