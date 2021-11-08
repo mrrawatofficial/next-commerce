@@ -45,26 +45,26 @@ const Nav = () => {
 						<ul className="navbar-nav align-items-center ms-auto">
 							<li className="nav-item">
 								<Link href="/">
-									<a className="nav-link active">
+									<a className="nav-link">
 										Home
-										<span className="visually-hidden">(current)</span>
+										{/* <span className="visually-hidden">(current)</span> */}
 									</a>
 								</Link>
 							</li>
 							<li className="nav-item">
-								<Link href="/">
+								<Link href="/shop">
 									<a className="nav-link" href="#">
 										Shop
 									</a>
 								</Link>
 							</li>
-							<li className="nav-item">
+							{/* <li className="nav-item">
 								<Link href="/">
 									<a className="nav-link " href="#">
 										Categories
 									</a>
 								</Link>
-							</li>
+							</li> */}
 						</ul>
 
 						<ul className="navbar-nav ms-auto">

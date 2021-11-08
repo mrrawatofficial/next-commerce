@@ -12,7 +12,7 @@ const index = ({ staticProduct }) => {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-md-12">asdfasd</div>
+					{/* <div className="col-md-12">asdfasd</div> */}
 					{staticProduct.map((product) => {
 						return <Product key={product.id} items={product} />;
 					})}
