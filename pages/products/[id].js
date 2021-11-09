@@ -1,26 +1,30 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { BiRupee } from "react-icons/bi";
 import Button from "../../components/Buttons";
-const singleProduct = () => {
+const singleProduct = ({ staticProduct }) => {
 	const { id } = useRouter().query;
-	const [product, setProduct] = useState({});
+	const [product, setProduct] = useState();
 	const [loader, setLoader] = useState(false);
-
 	useEffect(() => {
 		setLoader(true);
-		axios.get(`https://fakestoreapi.com/products/${id}`).then((res) => {
-			setProduct(res.data);
-			setLoader(false);
-		});
+		staticProduct
+			.filter((itm) => itm.id == id)
+			.map((itmaa) => {
+				setProduct(itmaa);
+				setLoader(false);
+			});
 	}, [id]);
 	return (
 		<>
 			<Head>
 				<title>{product?.title}</title>
-				<meta name="description" content={product?.title || "Discription"} />
+				<meta
+					name="description"
+					content={product?.description || "Discription"}
+				/>
 			</Head>
 			<section className="container-fluid py-5">
 				{loader ? (
@@ -44,12 +48,12 @@ const singleProduct = () => {
 									<strong>Price : </strong>
 									<span className="text-success">
 										<BiRupee />
-										{Math.floor(product?.price) * 70} &nbsp;&nbsp;
+										{Math.floor(product?.price) * 30} &nbsp;&nbsp;
 									</span>
 									<del>
 										<span className="text-danger">
 											<BiRupee />
-											{Math.floor(product?.price) * 75}
+											{Math.floor(product?.price) * 55}
 										</span>
 									</del>
 								</div>
@@ -75,3 +79,26 @@ const singleProduct = () => {
 };
 
 export default singleProduct;
+
+export async function getStaticPaths() {
+	const res = await fetch("https://fakestoreapi.com/products");
+	const staticProduct = await res.json();
+
+	const paths = staticProduct.map((p) => ({
+		params: { id: p.id.toString() },
+	}));
+	return {
+		paths,
+		fallback: false,
+	};
+}
+
+export async function getStaticProps() {
+	const res = await fetch("https://fakestoreapi.com/products");
+	const staticProduct = await res.json();
+	return {
+		props: {
+			staticProduct,
+		},
+	};
+}

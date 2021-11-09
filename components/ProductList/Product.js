@@ -31,17 +31,15 @@ const Product = ({ prodBgColor, items }) => {
 				</div>
 				<div className={styles.productDetails}>
 					<Link href={`/products/${items.id}`}>
-						<h5 className={`${styles.productTitle} text-truncate`}>
-							{items.title}
-						</h5>
+						<h5 className="text-truncate">{items.title}</h5>
 					</Link>
 					<div className={styles.productAction}>
 						<div className={styles.productPrice}>
 							<del className="text-danger">
-								<BiRupee /> {Math.floor(items.price) * 75}
+								<BiRupee /> {Math.floor(items.price) * 30}
 							</del>
 							<br />
-							<BiRupee /> {Math.floor(items.price) * 70}
+							<BiRupee /> {Math.floor(items.price) * 55}
 						</div>
 						<Button secondary>
 							<FiShoppingCart />
