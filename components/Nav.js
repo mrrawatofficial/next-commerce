@@ -1,9 +1,36 @@
+import {
+	Avatar,
+	Drawer,
+	Menu,
+	MenuItem,
+	Box,
+	List,
+	ListItem,
+	ListItemText,
+	Divider,
+} from "@mui/material";
 import Link from "next/link";
+import { useState } from "react";
 import { BiUser, BiHeart, BiSearch } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
 import styles from "../styles/nav.module.scss";
 
 const Nav = () => {
+	const [anchorEl, setAnchorEl] = useState(null);
+	const [openDrawer, setOpenDrawer] = useState(false);
+	const open = Boolean(anchorEl);
+	const handleClick = (event) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+	const handleOpenDrawer = () => {
+		setOpenDrawer(true);
+	};
+	const handleCloseDrawer = () => {
+		setOpenDrawer(false);
+	};
 	return (
 		<nav
 			className={`navbar navbar-expand-lg navbar-dark bg-primary sticky-top ${styles.navbar}`}
@@ -78,13 +105,11 @@ const Nav = () => {
 								</Link>
 							</li>
 							<li className="nav-item px-2 rounded me-2">
-								<Link href="/">
-									<a className="nav-link fs-4">
-										<span>
-											<FiShoppingCart />
-										</span>
-									</a>
-								</Link>
+								<a className="nav-link fs-4" onClick={handleOpenDrawer}>
+									<span>
+										<FiShoppingCart />
+									</span>
+								</a>
 							</li>
 							<li className="nav-item px-2 rounded me-2">
 								<Link href="/">
@@ -96,18 +121,55 @@ const Nav = () => {
 								</Link>
 							</li>
 							<li className="nav-item px-2 rounded me-2">
-								<Link href="/">
-									<a className="nav-link fs-4">
-										<span>
-											<BiUser />
-										</span>
-									</a>
-								</Link>
+								<a className="nav-link fs-4" onClick={handleClick}>
+									<Avatar
+										alt="Remy Sharp"
+										src="https://www.ninjaonlinedating.com/blog/wp-content/uploads/2019/08/BestDatingProfilePhotosForMenKRAK.jpg"
+									/>
+								</a>
+
+								<Menu
+									id="basic-menu"
+									anchorEl={anchorEl}
+									open={open}
+									onClose={handleClose}
+									MenuListProps={{
+										"aria-labelledby": "basic-button",
+									}}
+								>
+									<MenuItem onClick={handleClose}>Profile</MenuItem>
+									<MenuItem onClick={handleClose}>My account</MenuItem>
+									<MenuItem onClick={handleClose}>Logout</MenuItem>
+								</Menu>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			<Drawer anchor="right" open={openDrawer} onClose={handleCloseDrawer}>
+				<Box role="presentation">
+					<List>
+						<ListItem button>
+							<ListItemText primary={"Link 1"} />
+						</ListItem>
+					</List>
+					<List>
+						<ListItem button>
+							<ListItemText primary={"Link 2"} />
+						</ListItem>
+					</List>
+					<List>
+						<ListItem button>
+							<ListItemText primary={"Link 3"} />
+						</ListItem>
+					</List>
+					<List>
+						<ListItem button>
+							<ListItemText primary={"Link 4"} />
+						</ListItem>
+					</List>
+				</Box>
+			</Drawer>
 		</nav>
 	);
 };

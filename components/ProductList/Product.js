@@ -5,6 +5,7 @@ import { BsFillHeartFill } from "react-icons/bs";
 import { BiRupee } from "react-icons/bi";
 import Button from "../../components/Buttons";
 import styles from "./products.module.scss";
+import { IconButton } from "@mui/material";
 const Product = ({ prodBgColor, items }) => {
 	const [liked, setLiked] = useState(false);
 	const handleLike = () => {
@@ -13,22 +14,25 @@ const Product = ({ prodBgColor, items }) => {
 	return (
 		<div className="col-md-3">
 			<div className={styles.product}>
-				<div
-					className={styles.productHeader}
-					style={{ "--color": prodBgColor }}
-				>
-					<span
-						className={`${styles.wishList} ${liked && styles.liked}`}
-						onClick={handleLike}
+				<Link href={`/products/${items.id}`}>
+					<div
+						className={styles.productHeader}
+						style={{ "--color": prodBgColor }}
 					>
-						{liked ? <BsFillHeartFill /> : <FiHeart />}
-					</span>
-					<img
-						src={items.image}
-						alt={items.title}
-						className={styles.productImage}
-					/>
-				</div>
+						<span onClick={handleLike}>
+							<IconButton
+								className={`${styles.wishList} ${liked && styles.liked}`}
+							>
+								{liked ? <BsFillHeartFill /> : <FiHeart />}
+							</IconButton>
+						</span>
+						<img
+							src={items.image}
+							alt={items.title}
+							className={styles.productImage}
+						/>
+					</div>
+				</Link>
 				<div className={styles.productDetails}>
 					<Link href={`/products/${items.id}`}>
 						<h5 className="text-truncate">{items.title}</h5>
